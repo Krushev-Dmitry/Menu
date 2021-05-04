@@ -13,7 +13,7 @@ import Firebase
 //    var id : String? {get set}
 //}
 
-struct Product : Codable, Identifiable{
+struct Product : Codable, Identifiable, Equatable{
     var id: String? = nil // 15  параметров с id
     var category: String
     var subCategory : String?

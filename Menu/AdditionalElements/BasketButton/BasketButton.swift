@@ -47,6 +47,9 @@ class BasketButton : UIView {
     func configure(count: Int) {
         self.count = count
         self.countLabel.text = String(count)
+        if callbackCount != nil{
+            callbackCount!(count)
+        }
         layoutSubviews()
     }
 
@@ -104,12 +107,10 @@ class BasketButton : UIView {
     
     
     @objc func plusAction(sender: UIButton){
-        print("plus is Pressed")
         count = count + 1
         configure(count: count)
     }
     @objc func minusAction(sender: UIButton){
-        print("minus is Pressed")
         count = count - 1
         configure(count: count)
     }

@@ -52,13 +52,10 @@ class MenuTableViewCell2: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        
         parameter1.addTarget(self, action: #selector (parameter1Action), for: .touchUpInside)
         parameter2.addTarget(self, action: #selector (parameter2Action), for: .touchUpInside)
     }
 
-    
     
     func uniqueParameter(source: [String]) -> [String] {
       var unique = [String]()
@@ -121,31 +118,27 @@ class MenuTableViewCell2: UITableViewCell {
                 product = product.filter{ ($0.parameter1.contains(self.productInCell.parameter1))}
                 product = product.filter{ ($0.parameter2.contains(parameter)) }
             }
-            self.changeProductInCell(product: product[0], append: false)
+            self.changeProductInCell(product: product[0])
         }
         popVC.modalPresentationStyle = .popover
         popVC.modalTransitionStyle = .crossDissolve
             self.showPopUpVC!(popVC)
 
     }
-    
-    
-    
-    
 
-    
-
-
-    
-    func changeProductInCell(product: Product,append : Bool){
-        fillingCell(product: product, append: append)
+    func changeProductInCell(product: Product){
+        fillingCell(product: product)
         callbackProduct!(product)
     }
 
-    func fillingCell(product: Product, append: Bool) {
-
-
+    func fillingCell(product: Product) {
         self.productInCell = product
+        productCount = 0
+        for productInBasket in productsInBasket {
+            if productInBasket.product == productInCell {
+               productCount = productInBasket.productCount
+            }
+        }
 
         name.text = product.name
         if !product.attention.isEmpty {
@@ -191,18 +184,44 @@ class MenuTableViewCell2: UITableViewCell {
 
         
         let basketButton = BasketButton(frame: CGRect(x: 0, y: 0, width: basketButtonView.frame.width, height: basketButtonView.frame.height))
-        basketButton.configure(count: productCount)
-               basketButton.callbackCount = {(callbackCount : Int) in
-                    self.productCount = callbackCount
-                    print(product.name + "   :" + String(self.productCount))
-                    if self.callbackProduct != nil {
-                        self.callbackProduct!(self.productInCell)
-                    }
+            basketButton.configure(count: productCount)
+            basketButton.callbackCount = {(callbackCount : Int) in
+                self.productCount = callbackCount
+                self.operationWithBasket(product: self.productInCell, count: self.productCount)
+                print(product.name + "   :" + String(self.productCount))
+                if self.callbackProduct != nil {
+                    self.callbackProduct!(self.productInCell)
                 }
-        basketButtonView.backgroundColor = .none
-        basketButtonView.addSubview(basketButton)
+            }
+            basketButtonView.backgroundColor = .none
+            basketButtonView.addSubview(basketButton)
     }
     
+    
+    func operationWithBasket(product: Product, count: Int){
+        let products = productsInBasket.map({$0.product})
+        
+        if products.contains(self.productInCell){
+                for index in 0...productsInBasket.count-1 {
+                    if productsInBasket[index].product == productInCell {
+                        if count > 0 {
+                        productsInBasket[index].productCount = count
+                            break
+                        } else {
+                            productsInBasket.remove(at: index)
+                            break
+                        }
+                    }
+                }
+        
+        } else {
+            let productToBasket = ProductInBasket(product: product, productCount: count)
+            productsInBasket.append(productToBasket)
+        }
+
+        print("в корзине сейчас: \(productsInBasket.count) товаров")
+        print(productsInBasket.map(({"\($0.product.name)  :  \($0.productCount)"})))
+    }
     
 }
     

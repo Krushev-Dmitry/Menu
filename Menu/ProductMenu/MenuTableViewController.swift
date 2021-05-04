@@ -7,6 +7,8 @@
 
 import UIKit
 
+var productsInBasket = [ProductInBasket()]
+
 class MenuTableViewController: UITableViewController {
 
     var products = [Product]()
@@ -16,6 +18,7 @@ class MenuTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        productsInBasket.removeAll()
 //        MARK: parsing from firebase
 //        APIManager.shared.readProduct(collection: "Products") { (products) in
 //            self.products = products
@@ -43,7 +46,6 @@ class MenuTableViewController: UITableViewController {
         }
         self.tableView.reloadData()
 
-        
     }
     
     
@@ -88,12 +90,11 @@ class MenuTableViewController: UITableViewController {
         let cell = nib.instantiate(withOwner: self, options: nil).first as! MenuTableViewCell2
 
 
-
         for productInCell in products {
              if productInCell.name == productsName[indexPath.row]  {
                 productInCells[indexPath.row] = productInCell
                 cell.productsInCell.append(productInCell)
-                cell.fillingCell(product: productInCell, append: true)
+                cell.fillingCell(product: productInCell)
             }
         }
 
@@ -103,27 +104,12 @@ class MenuTableViewController: UITableViewController {
         }
 
         cell.callbackProduct = {(product : Product) in
-
             self.productInCells[indexPath.row] = product
-            print(self.productInCells.map({"\($0.name)"}))
-            print(self.productInCells.map({"\($0.price)"}))
         }
         
-        
-        
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-//
-//        var countOfProductInCell = 0
-//        for productInCell in products {
-//
-//                     if productInCell.name == productsName[indexPath.row]  {
-//                        countOfProductInCell += 1
-//                    }
-//                }
-//        cell.textLabel?.text = "Position: \(indexPath.row), Название: \(productsName[indexPath.row])"
-//        cell.detailTextLabel?.text = "кол-во в ячейке: \(countOfProductInCell)"
         return cell
     }
+    
 
     
     
@@ -146,10 +132,3 @@ class MenuTableViewController: UITableViewController {
 //    }
 
 }
-
-
-
-
-
-
-
