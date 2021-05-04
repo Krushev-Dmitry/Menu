@@ -16,28 +16,44 @@ import Firebase
 struct Product : Codable, Identifiable{
     var id: String? = nil // 15  параметров с id
     var category: String
+    var subCategory : String?
     var name: String
+    var attention: String = ""
     var description: String = ""
-    var price: String = ""
+    var price: Double
     var weight: String = ""
-
     var picture: String = ""
     var promotionPicture: String = ""
-    var energyCalories: String = ""
-    var energyFat: String = ""
-    var energyProtein: String = ""
+    var energyCalories: Int = 0
+    var energyFat: Int = 0
+    var energyProtein: Int = 0
     var energyCarbohydrates: String = ""
-    var selectionButton1: String = ""
-    var selectionButton2: String = ""
+    var parameter1: String = ""
+    var parameter2: String = ""
     var additionalProducts: String = ""
     
     init() {
         self.name = "без названия"
         self.category = "Pizza"
-        self.price = ""
+        self.price = 0
     }
-
-}
+    init(category: String, name: String, attention: String, description: String, price: Double, weight: String, parameter1: String, parameter2: String, additionalProducts : String){
+    self.category = category
+    self.name = name
+    self.attention = attention
+    self.description = description
+    self.price = price
+    self.weight = weight
+//    self.picture = picture
+//    self.promotionPicture = promotionPicture
+//    self.energyCalories = energyCalories
+//    self.energyFat = energyFat
+//    self.energyProtein =energyProtein
+//    self.energyCarbohydrates = energyCarbohydrates
+    self.parameter1 = parameter1
+    self.parameter2 = parameter2
+    self.additionalProducts = additionalProducts
+    }}
 
 enum MyError : Error {
     case encodingError

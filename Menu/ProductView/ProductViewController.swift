@@ -23,8 +23,8 @@ class ProductViewController: UIViewController {
     @IBOutlet weak var descriptionProduct: UILabel!
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var weight: UILabel!
-    @IBOutlet weak var selectionButton1: UIButton!
-    @IBOutlet weak var selectionButton2: UIButton!
+    @IBOutlet weak var parameter1: UIButton!
+    @IBOutlet weak var parameter2: UIButton!
     @IBOutlet weak var energyCalories: UILabel!
     @IBOutlet weak var energyFat: UILabel!
     @IBOutlet weak var energyProtein: UILabel!
@@ -41,15 +41,15 @@ class ProductViewController: UIViewController {
         
         products =  products.filter{ ($0.name.contains(product.name)) }
         
-        selectionButton1.addTarget(self, action: #selector (button1Action), for: .touchUpInside)
-        selectionButton1.layer.cornerRadius = 10
-        selectionButton1.layer.borderWidth = 2.0   // толщина обводки
-        selectionButton1.layer.borderColor = (UIColor.red.withAlphaComponent(0.2)).cgColor // цвет обводки
+        parameter1.addTarget(self, action: #selector (button1Action), for: .touchUpInside)
+        parameter1.layer.cornerRadius = 10
+        parameter1.layer.borderWidth = 2.0   // толщина обводки
+        parameter1.layer.borderColor = (UIColor.red.withAlphaComponent(0.2)).cgColor // цвет обводки
 
-        selectionButton2.addTarget(self, action: #selector (button2Action), for: .touchUpInside)
-        selectionButton2.layer.cornerRadius = 10
-        selectionButton2.layer.borderWidth = 2.0   // толщина обводки
-        selectionButton2.layer.borderColor = (UIColor.red.withAlphaComponent(0.2)).cgColor // цвет обводки
+        parameter2.addTarget(self, action: #selector (button2Action), for: .touchUpInside)
+        parameter2.layer.cornerRadius = 10
+        parameter2.layer.borderWidth = 2.0   // толщина обводки
+        parameter2.layer.borderColor = (UIColor.red.withAlphaComponent(0.2)).cgColor // цвет обводки
         
         fillingVC(product: product)
     }
@@ -67,8 +67,8 @@ class ProductViewController: UIViewController {
     
     @objc func button1Action (sender : UIButton){
 
-        let productSelect1 = products.filter{ ($0.selectionButton1 != "") }   // читаем есть ли у продукта параметры для выбора
-        let selectParameters = productSelect1.map({"\($0.selectionButton1)"})      // создаем масиив параметров для выбора
+        let productSelect1 = products.filter{ ($0.parameter1 != "") }   // читаем есть ли у продукта параметры для выбора
+        let selectParameters = productSelect1.map({"\($0.parameter1)"})      // создаем масиив параметров для выбора
         let uniqueSelectParameters = uniqueParameter(source: selectParameters)    // из массива параметров выбираем уникальные параметры
         
         print(selectParameters)
@@ -77,15 +77,15 @@ class ProductViewController: UIViewController {
         if uniqueSelectParameters.isEmpty{
             print ("нет параметров для выбора")
         } else{
-            popOverSelectingParameters(parameterNumber: 1, products: products, parameters: uniqueSelectParameters, previosParameter: product.selectionButton1)
+            popOverSelectingParameters(parameterNumber: 1, products: products, parameters: uniqueSelectParameters, previosParameter: product.parameter1)
         }
     }
     
     
     @objc func button2Action (sender : UIButton){
-        let productSelect1 = products.filter{ ($0.selectionButton1 == self.product.selectionButton1) } // создаем массив продуктов, который подходит по первому параметру
-        let productSelect2 = productSelect1.filter{ ($0.selectionButton2 != "") } // убираем нулевые жлементы массива
-        let selectParameters = productSelect2.map({"\($0.selectionButton2)"})
+        let productSelect1 = products.filter{ ($0.parameter1 == self.product.parameter1) } // создаем массив продуктов, который подходит по первому параметру
+        let productSelect2 = productSelect1.filter{ ($0.parameter2 != "") } // убираем нулевые жлементы массива
+        let selectParameters = productSelect2.map({"\($0.parameter2)"})
         let uniqueSelectParameters = uniqueParameter(source: selectParameters)
         
         print(selectParameters)
@@ -94,7 +94,7 @@ class ProductViewController: UIViewController {
         if uniqueSelectParameters.isEmpty{
             print ("нет параметров для выбора")
         } else{
-            popOverSelectingParameters(parameterNumber: 2, products: products, parameters: uniqueSelectParameters, previosParameter: product.selectionButton2)
+            popOverSelectingParameters(parameterNumber: 2, products: products, parameters: uniqueSelectParameters, previosParameter: product.parameter2)
         }
     }
     
@@ -114,11 +114,11 @@ class ProductViewController: UIViewController {
         popVC.selectedParameter1 = {(parameter: String) in
             var product = self.products
             if parameterNumber == 1 {
-                product = product.filter{ ($0.selectionButton1.contains(parameter)) }
+                product = product.filter{ ($0.parameter1.contains(parameter)) }
             }
             if parameterNumber == 2 {
-                product = product.filter{ ($0.selectionButton1.contains(self.product.selectionButton1))}
-                product = product.filter{ ($0.selectionButton2.contains(parameter)) }
+                product = product.filter{ ($0.parameter1.contains(self.product.parameter1))}
+                product = product.filter{ ($0.parameter2.contains(parameter)) }
             }
             self.product = product[0]
             self.fillingVC(product: product[0])
@@ -147,8 +147,8 @@ class ProductViewController: UIViewController {
         energyCarbohydrates.text = "Белки - \(product.energyCarbohydrates) г"
         energyCalories.text = "Энергетическкая ценность - \(product.energyCalories) ккал"
          
-        selectionButton1.setTitle(product.selectionButton1, for: .normal)
-        selectionButton2.setTitle(product.selectionButton2, for: .normal)
+        parameter1.setTitle(product.parameter1, for: .normal)
+        parameter2.setTitle(product.parameter2, for: .normal)
         
         price.text = "\(product.price) руб"
         weight.text = "\(product.weight) гр"

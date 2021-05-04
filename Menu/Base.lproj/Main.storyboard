@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5rX-cE-zB4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5rX-cE-zB4">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -27,7 +27,7 @@
                                         </constraints>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell2" rowHeight="60" id="S80-VI-bQy" customClass="Cell2TableViewCell" customModule="Menu" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28" width="354" height="60"/>
+                                                <rect key="frame" x="0.0" y="24.5" width="354" height="60"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="S80-VI-bQy" id="H5J-fq-yua">
                                                     <rect key="frame" x="0.0" y="0.0" width="354" height="60"/>
@@ -127,17 +127,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="RHl-QR-zvO" rowHeight="168" style="IBUITableViewCellStyleDefault" id="I6Y-h0-4br">
-                                <rect key="frame" x="0.0" y="28" width="414" height="168"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="8Hy-jL-Tmf" detailTextLabel="c2K-j8-q5v" rowHeight="168" style="IBUITableViewCellStyleSubtitle" id="I6Y-h0-4br">
+                                <rect key="frame" x="0.0" y="24.5" width="414" height="168"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="I6Y-h0-4br" id="wz4-yn-g1T">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="168"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RHl-QR-zvO">
-                                            <rect key="frame" x="20" y="0.0" width="374" height="168"/>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8Hy-jL-Tmf">
+                                            <rect key="frame" x="20" y="68" width="25" height="14.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="c2K-j8-q5v">
+                                            <rect key="frame" x="20" y="84.5" width="40.5" height="13.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -320,10 +327,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="68Y-lo-KC1">
-                                        <rect key="frame" x="259" y="653.5" width="150" height="40"/>
+                                        <rect key="frame" x="289" y="653.5" width="120" height="40"/>
                                         <color key="backgroundColor" systemColor="systemRedColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="150" id="CSl-kq-vyr"/>
+                                            <constraint firstAttribute="width" constant="120" id="CSl-kq-vyr"/>
                                             <constraint firstAttribute="height" constant="40" id="VVa-Ic-sRp"/>
                                         </constraints>
                                         <state key="normal" title="В корзину">
@@ -432,12 +439,12 @@
                         <outlet property="energyFat" destination="xwO-pU-ILZ" id="Edr-dp-hqh"/>
                         <outlet property="energyProtein" destination="tCm-dU-ctm" id="izy-Ne-KHk"/>
                         <outlet property="name" destination="cym-0X-9MV" id="LcY-wA-Z6F"/>
+                        <outlet property="parameter1" destination="rlf-Hz-pRK" id="mCl-eK-rol"/>
+                        <outlet property="parameter2" destination="R8e-vP-hCG" id="6eT-XF-gMy"/>
                         <outlet property="picture" destination="m5E-A6-lSQ" id="tg3-tj-gL4"/>
                         <outlet property="price" destination="QlG-Sb-pbC" id="qUX-1l-FYj"/>
                         <outlet property="productView" destination="N1a-SB-CBc" id="G6a-iV-M9z"/>
                         <outlet property="promotionPicture" destination="wCc-Se-HUQ" id="rXZ-RA-ZSa"/>
-                        <outlet property="selectionButton1" destination="rlf-Hz-pRK" id="mCl-eK-rol"/>
-                        <outlet property="selectionButton2" destination="R8e-vP-hCG" id="6eT-XF-gMy"/>
                         <outlet property="weight" destination="RPI-Qx-gjc" id="D1a-ep-GQJ"/>
                     </connections>
                 </viewController>
@@ -459,7 +466,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="selectParameterCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="xcx-JJ-BbS" style="IBUITableViewCellStyleDefault" id="sMW-RV-0eE">
-                                        <rect key="frame" x="0.0" y="28" width="374" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="24.5" width="374" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sMW-RV-0eE" id="DAV-Nv-bnU">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
