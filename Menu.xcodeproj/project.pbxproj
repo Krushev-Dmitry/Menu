@@ -158,9 +158,9 @@
 		33AED2CC263709B700615A19 /* ProductView */ = {
 			isa = PBXGroup;
 			children = (
+				33F26DC32617C633004E4BE2 /* ProductViewController.swift */,
 				33A5017E26110BC0002915F9 /* ProductSettingVC.swift */,
 				33A50186261115C1002915F9 /* Cell2TableViewCell.swift */,
-				33F26DC32617C633004E4BE2 /* ProductViewController.swift */,
 			);
 			path = ProductView;
 			sourceTree = "<group>";

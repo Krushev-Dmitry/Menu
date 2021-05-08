@@ -11,6 +11,7 @@ class MenuTableViewCell2: UITableViewCell {
 
 
     @IBOutlet weak var parentView: UIView!
+    @IBOutlet weak var subCategory: UILabel!
     @IBOutlet weak var picture: UIImageView!
     @IBOutlet weak var promotionPicture: UIImageView!
     @IBOutlet weak var name: UILabel!
@@ -52,8 +53,12 @@ class MenuTableViewCell2: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.backgroundColor = .none
+        parentView.backgroundColor = UIColor.blue.withAlphaComponent(0.05)
         parameter1.addTarget(self, action: #selector (parameter1Action), for: .touchUpInside)
+        buttonVisualSettings(button: parameter1)
         parameter2.addTarget(self, action: #selector (parameter2Action), for: .touchUpInside)
+        buttonVisualSettings(button: parameter2)
     }
 
     
@@ -141,6 +146,11 @@ class MenuTableViewCell2: UITableViewCell {
         }
 
         name.text = product.name
+        if product.subCategory != nil{
+            subCategory.backgroundColor = .red
+        } else {
+            subcategoryHieght.constant = 0
+        }
         if !product.attention.isEmpty {
             attention.text = product.attention
         } else {
@@ -223,6 +233,12 @@ class MenuTableViewCell2: UITableViewCell {
         print(productsInBasket.map(({"\($0.product.name)  :  \($0.productCount)"})))
     }
     
+    func buttonVisualSettings(button: UIButton){
+        button.backgroundColor = .none
+        button.layer.cornerRadius = 5
+        button.layer.borderWidth = 1.0   // толщина обводки
+        button.layer.borderColor = (UIColor.blue.withAlphaComponent(0.2)).cgColor // цвет обводки
+    }
 }
     
     

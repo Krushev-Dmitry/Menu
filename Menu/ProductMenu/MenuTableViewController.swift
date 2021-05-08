@@ -114,21 +114,23 @@ class MenuTableViewController: UITableViewController {
     
     
     
-//    MARK: didselectrowatindexpath
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        print("выбрана ячека \(indexPath.row)")
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let ProductVC = storyboard.instantiateViewController(identifier: "ProductVC") as! ProductViewController
-//
-//
-//        ProductVC.products = products
-//        ProductVC.product = productInCells[indexPath.row]
-//        ProductVC.index = indexPath.row
-//
-//        ProductVC.modalPresentationStyle = .popover
-//        ProductVC.modalTransitionStyle = .crossDissolve
-//
-//        present(ProductVC, animated: true, completion: nil)
-//    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("выбрана ячека \(indexPath.row)")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let ProductVC = storyboard.instantiateViewController(identifier: "ProductVC") as! ProductViewController
+
+
+        ProductVC.productsInCell = products
+        ProductVC.productInCell = productInCells[indexPath.row]
+        ProductVC.index = indexPath.row
+        ProductVC.callbackProduct = {(product : Product) in
+            self.productInCells[indexPath.row] = product
+            tableView.reloadData()
+        }
+        ProductVC.modalPresentationStyle = .popover
+        ProductVC.modalTransitionStyle = .crossDissolve
+
+        present(ProductVC, animated: true, completion: nil)
+    }
 
 }
