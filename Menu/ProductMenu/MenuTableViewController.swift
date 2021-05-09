@@ -12,6 +12,8 @@ var productsInBasket = [ProductInBasket()]
 class MenuTableViewController: UITableViewController {
 
     var products = [Product]()
+    var categories = [String]()
+    var selectedCategory = String()
     var productsName = [String]()
     var productInCells = [Product]()
     
@@ -38,16 +40,15 @@ class MenuTableViewController: UITableViewController {
 //            self.tableView.reloadData()
 //        }
         startProduct()
-        for name in products.map({"\($0.name)"}) {
-          if !productsName.contains(name) {
-            productsName.append(name)
-            productInCells.append(Product())
+
+        for category in products.map({"\($0.category)"}) {
+          if !categories.contains(category) {
+            categories.append(category)
           }
         }
-        self.tableView.reloadData()
+        changeCategory(selectedCategory: categories[0])
 
     }
-    
     
 
     // MARK: - Table view data source
@@ -58,24 +59,54 @@ class MenuTableViewController: UITableViewController {
     }
     
     
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
+    }
+    
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let nib = UINib(nibName: "MenuSegment", bundle: .main)
-        let headerView = nib.instantiate(withOwner: self, options: nil).first as! MenuSegment
-        
-        
-        // добавить скролинг сегментов
-        guard let sc = headerView.segmentController else {return headerView}
-            sc.removeAllSegments()
-            // вставить кол-во секций из БД
-            for segment in 0...5{
-            sc.insertSegment(withTitle: "номер сегмента \(segment)", at: segment, animated: false)
+//        let nib = UINib(nibName: "MenuSegment", bundle: .main)
+//        let headerView = nib.instantiate(withOwner: self, options: nil).first as! MenuSegment
+//
+//
+//        // добавить скролинг сегментов
+//        guard let sc = headerView.segmentController else {return headerView}
+//            sc.removeAllSegments()
+//            // вставить кол-во секций из БД
+//            for segment in 0...5{
+//            sc.insertSegment(withTitle: "номер сегмента \(segment)", at: segment, animated: false)
+//        }
+//
+//
+//        headerView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+//        headerView.autoresizesSubviews = true
+        let headerWithProductsCategory = UIView(frame: CGRect(x: 0 , y: 0, width: self.view.frame.width, height: 40))
+        headerWithProductsCategory.backgroundColor = UIColor.black.withAlphaComponent(0.1)
+
+        let scrollView = ScrollViewWithSegmentControll(parentView: headerWithProductsCategory, parameters: categories, selectedParameter: selectedCategory)
+        scrollView.callBackSegmentControl = {(parameter : String) in
+            self.changeCategory(selectedCategory: parameter)
         }
         
-                
-        headerView.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        headerView.autoresizesSubviews = true
-        return headerView
+        return headerWithProductsCategory
 
+    }
+    
+    func changeCategory(selectedCategory: String){
+        self.selectedCategory = selectedCategory
+        let products = self.products.filter { product in
+            if product.category == selectedCategory {
+                return true
+            } else {return false}
+        }
+        productsName.removeAll()
+        productInCells.removeAll()
+        for name in products.map({"\($0.name)"}) {
+          if !productsName.contains(name) {
+            productsName.append(name)
+            productInCells.append(Product())
+          }
+        }
+        self.tableView.reloadData()
     }
     
 

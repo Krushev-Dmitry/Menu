@@ -62,6 +62,12 @@ extension MenuTableViewController{
         self.products.append(Product(category: "test", name: "testtestesttesttesttesttesttestesttesttesttesttesttestesttesttesttest", attention: "testtestesttesttesttesttesttestesttesttesttesttesttestesttesttesttesttesttestesttesttesttesttesttestesttesttesttesttesttestesttesttesttesttesttestesttesttesttest", description: "testtestesttesttesttesttesttestesttesttesttesttesttestesttesttesttesttesttestesttesttesttesttesttestesttesttesttesttesttestesttesttesttesttesttestesttesttesttest", price: 12, weight: "test мл", parameter1: "", parameter2: "", additionalProducts: ""))
         
         self.products.append(Product(category: "Напитки", name: "кола", attention: "", description: "", price: 4, weight: "500 мл", parameter1: "", parameter2: "", additionalProducts: ""))
+        self.products.append(Product(category: "Напитки", name: "чай черный", attention: "", description: "", price: 5, weight: "300 мл", parameter1: "", parameter2: "", additionalProducts: ""))
+        self.products.append(Product(category: "Напитки", name: "чай зеленый", attention: "", description: "", price: 5, weight: "300 мл", parameter1: "", parameter2: "", additionalProducts: ""))
+        self.products.append(Product(category: "Напитки", name: "чай ягодный", attention: "очень горячий))", description: "", price: 5, weight: "300 мл", parameter1: "", parameter2: "", additionalProducts: ""))
+        self.products.append(Product(category: "Напитки", name: "кофе американо", attention: "", description: "", price: 5, weight: "300 мл", parameter1: "", parameter2: "", additionalProducts: ""))
+        self.products.append(Product(category: "Напитки", name: "кофе капучино", attention: "", description: "", price: 6, weight: "300 мл", parameter1: "", parameter2: "", additionalProducts: ""))
+        self.products.append(Product(category: "Напитки", name: "кофе латте", attention: "", description: "", price: 6, weight: "300 мл", parameter1: "", parameter2: "", additionalProducts: ""))
         
         
         
