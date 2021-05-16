@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -469,27 +470,10 @@
             </objects>
             <point key="canvasLocation" x="6437.68115942029" y="-609.375"/>
         </scene>
-        <!--Basket-->
-        <scene sceneID="2Uh-Sa-eWF">
-            <objects>
-                <viewController id="1LB-ew-Q0g" customClass="BasketViewController" customModule="Menu" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="1ao-Gx-vmh">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="0oT-2N-UDe"/>
-                        <color key="backgroundColor" systemColor="systemTealColor"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Basket" image="cart" catalog="system" id="33R-Az-f2S"/>
-                    <navigationItem key="navigationItem" id="afV-Vk-XQS"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tju-T5-SoZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3745" y="519"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="0xg-Mb-0pp">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="5rX-cE-zB4" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" automaticallyAdjustsScrollViewInsets="NO" id="5rX-cE-zB4" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="oVV-jO-Gu2"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="rfx-Ja-jqr">
@@ -498,19 +482,19 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="jW2-N9-Efz" kind="relationship" relationship="viewControllers" id="aT3-5q-XHh"/>
-                        <segue destination="1LB-ew-Q0g" kind="relationship" relationship="viewControllers" id="kwT-Ln-IoR"/>
+                        <segue destination="jW2-N9-Efz" kind="relationship" relationship="viewControllers" destinationCreationSelector="showMenu" id="aT3-5q-XHh"/>
+                        <segue destination="pWo-jJ-AUZ" kind="relationship" relationship="viewControllers" id="U7g-CO-aUu"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vbH-aL-ymz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2900" y="94"/>
         </scene>
-        <!--Menu-->
+        <!--Меню-->
         <scene sceneID="mMf-rZ-Rgj">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jW2-N9-Efz" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Menu" image="book" catalog="system" id="IMl-ZS-4Ek"/>
+                    <tabBarItem key="tabBarItem" title="Меню" image="book" catalog="system" id="IMl-ZS-4Ek"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="MOG-im-FKj">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -525,6 +509,108 @@
             </objects>
             <point key="canvasLocation" x="3744.9275362318845" y="-615.40178571428567"/>
         </scene>
+        <!--Корзина-->
+        <scene sceneID="Sxe-ws-veX">
+            <objects>
+                <viewController storyboardIdentifier="basketView" id="pWo-jJ-AUZ" customClass="BasketViewController" customModule="Menu" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6sq-hc-dWm">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vqt-Ri-cTD">
+                                <rect key="frame" x="0.0" y="683" width="414" height="130"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Сумма заказа: 56 руб." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3QG-Ub-LrO">
+                                        <rect key="frame" x="8" y="8" width="398" height="38"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8gr-Xx-Nib">
+                                        <rect key="frame" x="8" y="46" width="398" height="38"/>
+                                        <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                        <state key="normal" title="Оформить заказ">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mzs-MA-Wj8">
+                                        <rect key="frame" x="8" y="84" width="398" height="38"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <state key="normal" title="Очистить заказ">
+                                            <color key="titleColor" systemColor="systemTealColor"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="Mzs-MA-Wj8" firstAttribute="leading" secondItem="vqt-Ri-cTD" secondAttribute="leading" constant="8" id="6Ce-Vh-3Ja"/>
+                                    <constraint firstItem="Mzs-MA-Wj8" firstAttribute="height" secondItem="3QG-Ub-LrO" secondAttribute="height" id="A2P-C3-rSr"/>
+                                    <constraint firstItem="8gr-Xx-Nib" firstAttribute="top" secondItem="3QG-Ub-LrO" secondAttribute="bottom" id="CAN-DT-xOD"/>
+                                    <constraint firstAttribute="height" constant="130" id="CP5-gG-zO7"/>
+                                    <constraint firstAttribute="trailing" secondItem="Mzs-MA-Wj8" secondAttribute="trailing" constant="8" id="DSJ-Hn-jdW"/>
+                                    <constraint firstAttribute="bottom" secondItem="Mzs-MA-Wj8" secondAttribute="bottom" constant="8" id="GIw-UY-twN"/>
+                                    <constraint firstItem="3QG-Ub-LrO" firstAttribute="leading" secondItem="vqt-Ri-cTD" secondAttribute="leading" constant="8" id="M85-7G-t82"/>
+                                    <constraint firstItem="8gr-Xx-Nib" firstAttribute="leading" secondItem="vqt-Ri-cTD" secondAttribute="leading" constant="8" id="VB7-mX-Arr"/>
+                                    <constraint firstItem="3QG-Ub-LrO" firstAttribute="top" secondItem="vqt-Ri-cTD" secondAttribute="top" constant="8" id="X1n-al-6GW"/>
+                                    <constraint firstAttribute="trailing" secondItem="8gr-Xx-Nib" secondAttribute="trailing" constant="8" id="ahS-jp-0qK"/>
+                                    <constraint firstAttribute="trailing" secondItem="3QG-Ub-LrO" secondAttribute="trailing" constant="8" id="iy4-bw-DSl"/>
+                                    <constraint firstItem="8gr-Xx-Nib" firstAttribute="height" secondItem="3QG-Ub-LrO" secondAttribute="height" id="mYL-bJ-D0v"/>
+                                    <constraint firstItem="Mzs-MA-Wj8" firstAttribute="top" secondItem="8gr-Xx-Nib" secondAttribute="bottom" id="mht-ef-Oou"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HMp-Ob-smx">
+                                <rect key="frame" x="0.0" y="44" width="414" height="641"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="kxj-mV-f6q">
+                                    <rect key="frame" x="0.0" y="196.00000034679067" width="414" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" name="AccentColor"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal" title="Посмотреть меню"/>
+                                    <connections>
+                                        <action selector="goToMenuView:" destination="pWo-jJ-AUZ" eventType="touchUpInside" id="QGI-YA-Rsi"/>
+                                    </connections>
+                                </button>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="147" id="4KG-JL-2wc">
+                                        <rect key="frame" x="0.0" y="24.5" width="414" height="147"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4KG-JL-2wc" id="Sa2-JF-cVV">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="147"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ixQ-z5-ucS"/>
+                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="vqt-Ri-cTD" firstAttribute="top" secondItem="HMp-Ob-smx" secondAttribute="bottom" constant="-2" id="21s-8O-r7B"/>
+                            <constraint firstItem="HMp-Ob-smx" firstAttribute="top" secondItem="ixQ-z5-ucS" secondAttribute="top" id="4CR-GO-yZ3"/>
+                            <constraint firstItem="vqt-Ri-cTD" firstAttribute="leading" secondItem="ixQ-z5-ucS" secondAttribute="leading" id="Pa7-nd-MUF"/>
+                            <constraint firstItem="HMp-Ob-smx" firstAttribute="leading" secondItem="ixQ-z5-ucS" secondAttribute="leading" id="bEt-1l-Y4e"/>
+                            <constraint firstItem="ixQ-z5-ucS" firstAttribute="trailing" secondItem="vqt-Ri-cTD" secondAttribute="trailing" id="etH-zs-I5x"/>
+                            <constraint firstItem="ixQ-z5-ucS" firstAttribute="trailing" secondItem="HMp-Ob-smx" secondAttribute="trailing" id="mLG-bb-PSr"/>
+                            <constraint firstItem="ixQ-z5-ucS" firstAttribute="bottom" secondItem="vqt-Ri-cTD" secondAttribute="bottom" id="wFl-as-Msi"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Корзина" image="cart" catalog="system" id="mfz-xP-HGG"/>
+                    <navigationItem key="navigationItem" id="ssI-7u-kTX"/>
+                    <connections>
+                        <outlet property="clearOderButton" destination="Mzs-MA-Wj8" id="fmt-cJ-cdJ"/>
+                        <outlet property="getOderButton" destination="8gr-Xx-Nib" id="486-NT-Gvi"/>
+                        <outlet property="goToMenuViewButton" destination="kxj-mV-f6q" id="cJ3-XL-L3a"/>
+                        <outlet property="heightOfPriceSection" destination="CP5-gG-zO7" id="h5y-aQ-bhU"/>
+                        <outlet property="orderPriceLabel" destination="3QG-Ub-LrO" id="e4j-K6-ubB"/>
+                        <outlet property="priceView" destination="vqt-Ri-cTD" id="vaL-Me-k9f"/>
+                        <outlet property="tableView" destination="HMp-Ob-smx" id="nBn-g6-LJx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kNM-df-saJ" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3920" y="467"/>
+        </scene>
     </scenes>
     <resources>
         <image name="book" catalog="system" width="128" height="102"/>
@@ -536,6 +622,9 @@
         <image name="rivyera" width="259" height="259"/>
         <image name="slider.horizontal.3" catalog="system" width="128" height="100"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
@@ -545,6 +634,9 @@
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemGray2Color">
             <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
@@ -553,6 +645,9 @@
         </systemColor>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

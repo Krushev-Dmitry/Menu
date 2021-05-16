@@ -145,7 +145,13 @@ class ProductViewController: UIViewController {
     
     
     func fillingVC(product : Product){
-
+        self.productInCell = product
+        productCount = 0
+        for productInBasket in productsInBasket {
+            if productInBasket.product == productInCell {
+               productCount = productInBasket.productCount
+            }
+        }
         name.text = product.name
 
         if !product.attention.isEmpty {
@@ -206,7 +212,7 @@ class ProductViewController: UIViewController {
                     self.callbackProduct!(self.productInCell)
                 }
             }
-            basketButton.backgroundColor = .none
+            basketButtonView.backgroundColor = .none
             basketButtonView.addSubview(basketButton)
 
         

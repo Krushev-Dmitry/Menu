@@ -91,6 +91,10 @@ class MenuTableViewController: UITableViewController {
 
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
+    
     func changeCategory(selectedCategory: String){
         self.selectedCategory = selectedCategory
         let products = self.products.filter { product in
